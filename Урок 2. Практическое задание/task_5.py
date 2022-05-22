@@ -19,3 +19,17 @@
 
 Допускается исп-е встроенных ф-ций
 """
+
+
+def chr_row(val):
+    """Рекурсия"""
+    if val == 128:
+        return True
+    print(f' {val} - {chr(val)}', end=' ')
+    if (val - 31) % 10 == 0:
+        print('\n')
+
+    chr_row(val + 1)
+
+
+chr_row(32)

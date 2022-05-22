@@ -13,3 +13,21 @@
 
 Решите через рекурсию. В задании нельзя применять циклы.
 """
+
+def recur(number, i, summ):
+    if(i == number):
+        return summ + number 
+    
+    
+    return recur(number, i + 1, summ + i)
+        
+    
+    
+quantity = int(input("Введите количество: "))
+print(recur(quantity, 1, 0) == quantity * (quantity + 1) / 2)
+
+
+
+
+
+    
