@@ -7,3 +7,27 @@
 
 Решите через рекурсию. В задании нельзя применять циклы.
 """
+
+import random
+
+
+def func(rand, i):
+    
+    if(i >= 9):
+        print('Конец игры')
+    var = int(input('Отгадайте число: '))
+    
+    
+    if(rand > var):
+        print('загаданное число больше')
+    elif rand < var:
+        print('загаданное число меньше')
+    else:
+        print('Вы угадали')
+        return
+        
+    func(rand, i + 1)
+
+
+
+func(random.randint(0, 100), 0)

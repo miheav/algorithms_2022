@@ -27,3 +27,52 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+accessores = ['+', '-', '*', '/']
+
+def func():
+    
+    var = ''
+    
+    while var not in accessores:
+        var = input('Введите операцию (+, -, *, / или 0 для выхода):')
+        if(var == '0'):
+            return 0
+    
+    
+    first = input('Введите первое число:')
+    
+    while not first.isdigit():
+        print('Вы ввели не число')
+        first = input('Введите первое число:')
+    
+    second = input('Введите второе число:')
+    
+    while not second.isdigit():
+        print('Вы ввели не число')
+        second = input('Введите первое число:')
+        
+    
+    first = float(first)
+    second = float(second)
+    
+    if var == '+':
+        result = first + second
+    elif var == '-':
+        result = first - second
+    elif var == '*':
+        result = first * second 
+    elif var == '/':
+        if second != 0:
+            result = first / second
+        else:
+            result = 'На ноль делить нельзя'
+            
+            
+    print(result)
+    
+        
+    func()
+    
+
+func()
