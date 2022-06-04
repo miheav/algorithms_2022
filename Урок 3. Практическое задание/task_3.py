@@ -22,3 +22,12 @@
 р
 а
 """
+import hashlib
+
+set = set()
+str = 'papa'
+for i in range(len(str)):
+    for b in range(i + 1, len(str) + 1):
+        set.add(hashlib.sha256(str[i:b].encode()).hexdigest())
+print(set)
+print(f'Количество элементов в множестве: {len(set)}')

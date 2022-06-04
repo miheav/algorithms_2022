@@ -15,3 +15,22 @@
 и одного из алгоритмов, например, sha512
 Можете усложнить задачу, реализовав ее через ООП
 """
+
+from uuid import uuid4
+from hashlib import sha256
+
+salt = '12345'
+cache = {}
+
+
+def get_page(url):
+    if cache.get(url):
+       print('Данный урл уже присутсвует')
+    else:
+        cache[url] = sha256(salt.encode('UTF-8') + url.encode('UTF-8')).hexdigest()
+
+
+
+get_page('https://yandex.ru')
+get_page('https://yandex.ru')
+

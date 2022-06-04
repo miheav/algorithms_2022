@@ -22,3 +22,50 @@ f1dcaeeafeb855965535d77c55782349444b
 воспользуйтесь базой данный sqlite, postgres и т.д.
 п.с. статья на Хабре - python db-api
 """
+
+import json
+from hashlib import sha256
+
+soil = '12345'
+
+def generate_passwords():
+    
+    password = {'passwords': ['123', 'abv', '111']}
+    hash = {'passwords':[], 'soil': soil}
+    for i in password['passwords']:
+        hash['passwords'].append(sha256(soil.encode('utf-8')+i.encode('utf-8')).hexdigest())
+    
+    with open('passwords.json', 'w') as outfile:
+        outfile.write(json.dumps(hash))
+    
+    
+
+    
+#generate_passwords()
+
+
+
+def get_password(password):
+    passwords = {}
+    with open('passwords.json') as json_file:
+        passwords = json.load(json_file)
+
+    hash = sha256(passwords['soil'].encode('utf-8')+password.encode('utf-8')).hexdigest()
+    
+    if hash in passwords['passwords']:
+        return True 
+    else:
+        return False
+
+
+
+
+
+password_1 = get_password(input("Введите пароль: "))
+
+password_2 = input("Введите пароль еще раз: ")
+
+if(password_1 and password_2):
+    print("Вы авторизовались")
+else:
+    print("Введен неверный пароль")
