@@ -24,3 +24,42 @@ reduce
 __mul__
 __add__
 """
+import collections
+import functools
+from collections import defaultdict
+numbers = defaultdict(list)
+# numbers[0] = list(input('Введите шестнадцатиричное число'))
+# numbers[1] = list(input('Введите второе шестнадцатиричное число'))
+
+numbers[0] = list('A2')
+numbers[1] = list('C4F')
+sum = list(hex(int(''.join(numbers[0]), 16) + int(''.join(numbers[1]), 16)))
+
+print(f'sum = {sum}')
+
+
+miltiply = list(hex(int(''.join(numbers[0]), 16) * int(''.join(numbers[1]), 16)))
+
+print(f'miltiply = {miltiply}')
+
+class Hex:
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+
+    def __add__(self, other):
+        return list(hex(int(''.join(self.first), 16)
+                        + int(''.join(other.second), 16)))
+
+    def __mul__(self, other):
+
+        return list(hex(int(''.join(self.first), 16)
+                        * int(''.join(other.second), 16)))
+
+
+
+
+sum = Hex(numbers[0], numbers[1]) +  Hex(numbers[0], numbers[1]) 
+print(f'sum = {sum}')
+miltiply = Hex(numbers[0], numbers[1]) *  Hex(numbers[0], numbers[1]) 
+print(f'miltiply = {miltiply}')
