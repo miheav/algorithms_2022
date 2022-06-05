@@ -30,3 +30,49 @@
 
 Это файл для второго скрипта
 """
+#python/Mikheev_Aleksey_dz_9/task_9_2.py 
+
+from pympler import asizeof
+
+class Road:
+
+    weight_1sm = 25
+    sm = 5
+
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+
+    def calculation(self):
+
+        return self._length * self._width * self.weight_1sm * self.sm
+
+    
+asd = Road(5, 2)
+print(asd.calculation())
+print(asizeof.asizeof((asd))) 
+class RoadNew:
+    __slots__ = ['_length', '_width', 'weight_1sm', 'sm']
+
+
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+        self.weight_1sm = 25
+        self.sm = 5
+        
+    def calculation(self):
+
+        return self._length * self._width * self.weight_1sm * self.sm
+    
+    
+asd = RoadNew(5, 2)
+print(asd.calculation())
+print(asizeof.asizeof((asd))) 
+
+
+# 1250
+# 328
+# 1250
+# 160
+# Потребление памяти уменьшилось вдвое

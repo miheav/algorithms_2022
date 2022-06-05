@@ -30,3 +30,44 @@
 
 Это файл для первого скрипта
 """
+# Урок 2 задание 4
+
+from memory_profiler import profile
+
+@profile
+def wrap(n_count):
+    def recur(i, numb, n_count, common_sum):
+        """Рекурсия"""
+        if i == n_count:
+            print(f"Количество элементов - {n_count}, их сумма - {common_sum}")
+        elif i < n_count:
+            return recur(i + 1, numb / 2 * -1, n_count, common_sum+numb)
+    return recur(0, 1, n_count, 0)
+
+
+try:
+    N_COUNT = int(input("Введите количество элементов: "))
+    wrap(N_COUNT)
+except ValueError:
+    print("Вы вместо числа ввели строку. Исправьтесь")
+    
+    
+    
+@profile
+def recur_new(n_count):
+    element = 1
+    sum = 0
+    for i in range(n_count):
+        sum += element
+        element = element / 2 * -1
+    print(f"Количество элементов - {n_count}, их сумма - {sum}")
+    
+    
+try:
+    N_COUNT = int(input("Введите количество элементов: "))
+    recur_new(N_COUNT)
+except ValueError:
+    print("Вы вместо числа ввели строку. Исправьтесь")
+    
+    
+# Заменив рекурсию на цикл удалось незначительно уменьшить потребление памяти

@@ -30,3 +30,16 @@
 
 Это файл для третьего скрипта
 """
+
+#Список из урока 5 задания 3
+from numpy import array
+from pympler import asizeof
+
+
+lst = [i for i in range(10 ** 7)]
+print(asizeof.asizeof(lst))  # -> 409095152 байт
+
+lst = array([i for i in range(10 ** 7)])
+print(asizeof.asizeof(lst))  # -> 40000128 байт
+
+# массив numpy требует меньше ресурсов
