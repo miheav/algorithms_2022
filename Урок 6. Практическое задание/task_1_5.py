@@ -30,3 +30,41 @@
 
 Это файл для пятого скрипта
 """
+
+from memory_profiler import profile
+from memory_profiler import memory_usage
+
+@profile
+def wrap(numb):
+    def revers(numb):
+
+        first = numb // 10
+        second = numb % 10
+
+        if first == 0:
+            return str(second)
+        else:
+            return str(second) + str(revers(first))
+    return revers(numb)
+
+
+@profile
+def revers(numb):
+    
+    return str(numb)[::-1]
+    
+    
+
+m1 = memory_usage()
+print(wrap(199200))
+m2 = memory_usage()
+print('first', m2[0] - m1[0])
+m1 = memory_usage()
+print(revers(199200))
+m2 = memory_usage()
+print('second', m2[0] - m1[0])
+
+
+# first 0.3046875
+
+# second 0.00390625
